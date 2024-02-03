@@ -20,7 +20,8 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ContinentsScreen(
-    state: CountryUiState
+    state: ContinentsUiState,
+    navigateToCountries: (String) -> Unit
 ) {
     Box(Modifier.fillMaxSize(), Alignment.Center) {
         if (state.isLoading) {
@@ -29,7 +30,7 @@ fun ContinentsScreen(
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     "Continents \uD83C\uDF0E",
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.displaySmall,
                 )
                 Spacer(Modifier.height(32.dp))
                 FlowRow(
@@ -37,7 +38,14 @@ fun ContinentsScreen(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     for (continent in state.continents) {
-                        SuggestionChip(onClick = {},label = { Text(continent.name) })
+                        SuggestionChip(
+                            onClick = { navigateToCountries(continent.name) },
+                            label = {
+                                Text(
+                                    continent.name,
+                                    style = MaterialTheme.typography.titleMedium
+                                )
+                            })
                     }
                 }
             }
