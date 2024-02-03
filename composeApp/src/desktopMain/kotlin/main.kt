@@ -1,3 +1,4 @@
+import app.MyCountryApp
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
@@ -5,12 +6,12 @@ import androidx.compose.ui.window.application
 
 fun main() = application {
     Window(onCloseRequest = ::exitApplication, title = "My Country App") {
-        App()
+        MyCountryApp()
     }
 }
 
 @Preview
 @Composable
 fun AppDesktopPreview() {
-    App()
+    MyCountryApp()
 }
