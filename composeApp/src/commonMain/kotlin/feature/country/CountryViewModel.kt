@@ -10,7 +10,8 @@ import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
 
 data class CountryUiState(
-    val continents: List<Continent> = emptyList()
+    val continents: List<Continent> = emptyList(),
+    val isLoading: Boolean = true
 )
 
 class CountryViewModel(
@@ -22,8 +23,8 @@ class CountryViewModel(
     fun updateContinents() {
         viewModelScope.launch {
             val continents = continentClient.getContinents()
-            _uiState.update {
-                it.copy(continents = continents)
+            _uiState.update { state ->
+                state.copy(continents = continents, isLoading = false)
             }
         }
     }
