@@ -1,4 +1,3 @@
-import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -28,26 +27,21 @@ kotlin {
     sourceSets {
         val desktopMain by getting
         androidMain.dependencies {
-            implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.components.resources)
-            implementation(libs.apollo3.runtime)
-            implementation(libs.koin)
-            implementation(libs.koin.compose)
+            api(compose.runtime)
+            api(compose.material3)
+            api(compose.foundation)
+            api(libs.apollo3.runtime)
+            api(libs.koin)
+            api(libs.koin.compose)
             api(libs.precompose)
             api(libs.precompose.viewmodel)
             api(libs.precompose.koin)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }
@@ -80,9 +74,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    dependencies {
-        debugImplementation(libs.compose.ui.tooling)
     }
 }
 
