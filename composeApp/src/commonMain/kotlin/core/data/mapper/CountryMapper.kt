@@ -6,5 +6,8 @@ import org.example.ContinentsQuery
 fun ContinentsQuery.Country.toCountry() = Country(
     name = name,
     capital = capital ?: "No capital",
-    emoji = emoji
+    emoji = emoji,
+    currency = currency ?: "No currency",
+    continent = continent.name,
+    languages = languages.map { it.name }
 )

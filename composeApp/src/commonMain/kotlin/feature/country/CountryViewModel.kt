@@ -16,8 +16,10 @@ data class ContinentsUiState(
 )
 
 data class CountriesUiState(
-    val selectedContinent: String = "",
+    val selectedContinent: String? = null,
+    val selectedCountry: Country? = null,
     val countries: List<Country> = emptyList()
+
 )
 
 class CountryViewModel(
@@ -45,6 +47,16 @@ class CountryViewModel(
                 countries = continentsUiState.value.continents
                     .find { it.name == name }!!.countries
             )
+        }
+    }
+
+    fun selectCountry(name: String?) {
+        _countriesUiState.update { state ->
+            if (name != null) {
+                state.copy(selectedCountry = state.countries.find { it.name == name })
+            } else {
+                state.copy(selectedCountry = null)
+            }
         }
     }
 }

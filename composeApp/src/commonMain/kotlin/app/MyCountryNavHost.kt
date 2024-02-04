@@ -34,7 +34,8 @@ fun MyCountryNavHost() {
             val uiState by viewModel.countriesUiState.collectAsState()
             CountriesScreen(
                 state = uiState,
-                onClickBack = { navigator.goBack() }
+                onClickBack = { navigator.goBack() },
+                onClickCountry = { countryName -> viewModel.selectCountry(countryName) }
             )
         }
     }

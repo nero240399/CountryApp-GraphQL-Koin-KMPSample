@@ -5,6 +5,13 @@ query Continents {
       name
       capital
       emoji
+      currency
+      languages {
+        name
+      }
+      continent {
+        name
+      }
     }
   }
 }
