@@ -35,7 +35,7 @@ fun ContinentsScreen(
                 Spacer(Modifier.height(32.dp))
                 FlowRow(
                     Modifier.padding(horizontal = 8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
                 ) {
                     for (continent in state.continents) {
                         SuggestionChip(
