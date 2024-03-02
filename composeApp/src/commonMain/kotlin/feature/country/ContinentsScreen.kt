@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
@@ -25,7 +26,7 @@ fun ContinentsScreen(
 ) {
     Box(Modifier.fillMaxSize(), Alignment.Center) {
         if (state.isLoading) {
-            Text("loading...")
+            LinearProgressIndicator()
         } else {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
