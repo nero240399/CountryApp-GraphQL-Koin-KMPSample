@@ -1,8 +1,8 @@
 package feature.country
 
-import core.domain.ContinentClient
-import core.domain.model.Continent
-import core.domain.model.Country
+import core.model.Continent
+import core.network.NetworkDataSource
+import core.model.Country
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -23,7 +23,7 @@ data class CountriesUiState(
 )
 
 class CountryViewModel(
-    private val continentClient: ContinentClient
+    private val networkDataSource: NetworkDataSource
 ) : ViewModel() {
     private val _continentsUiState = MutableStateFlow(ContinentsUiState())
     val continentsUiState = _continentsUiState.asStateFlow()
@@ -33,7 +33,7 @@ class CountryViewModel(
 
     fun updateContinents() {
         viewModelScope.launch {
-            val continents = continentClient.getContinents()
+            val continents = networkDataSource.getContinents()
             _continentsUiState.update { state ->
                 state.copy(continents = continents, isLoading = false)
             }

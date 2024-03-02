@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ContinentsScreen(
+fun ContinentListScreen(
     state: ContinentsUiState,
     navigateToCountries: (String) -> Unit
 ) {

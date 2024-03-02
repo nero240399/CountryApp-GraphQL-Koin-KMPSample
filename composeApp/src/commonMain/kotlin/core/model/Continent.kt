@@ -1,4 +1,4 @@
-package core.domain.model
+package core.model
 
 data class Continent(
     val name: String,

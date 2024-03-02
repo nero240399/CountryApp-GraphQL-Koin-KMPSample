@@ -1,19 +1,19 @@
-package core.data
+package core.network.apollo
 
 import com.apollographql.apollo3.ApolloClient
-import core.data.mapper.toDomainModel
-import core.domain.ContinentClient
-import core.domain.model.Continent
+import core.model.Continent
+import core.network.model.asExternalModel
+import core.network.NetworkDataSource
 import org.example.ContinentsQuery
 
-class ApolloContinentClient(
+class ApolloNetwork(
     private val apolloClient: ApolloClient
-) : ContinentClient {
+) : NetworkDataSource {
     override suspend fun getContinents(): List<Continent> = apolloClient
         .query(ContinentsQuery())
         .execute()
         .data
         ?.continents
-        ?.map { it.toDomainModel() }
+        ?.map { it.asExternalModel() }
         ?: emptyList()
 }
